@@ -1,0 +1,59 @@
+{
+  "name": "Hilton",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "lint": "tslint --project tsconfig.json",
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest",
+    "tsc": "tsc"
+  },
+  "dependencies": {
+    "react": "16.6.3",
+    "react-native": "0.58.4"
+  },
+  "devDependencies": {
+    "@types/enzyme": "^3.1.17",
+    "@types/enzyme-adapter-react-16": "^1.0.3",
+    "@types/jest": "^24.0.0",
+    "@types/react": "^16.8.2",
+    "@types/react-native": "^0.57.35",
+    "@types/react-test-renderer": "^16.8.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "24.1.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.9.1",
+    "jest": "24.1.0",
+    "metro-react-native-babel-preset": "0.51.1",
+    "react-dom": "^16.8.1",
+    "react-native-testing-library": "^1.5.0",
+    "react-test-renderer": "16.6.3",
+    "ts-jest": "^23.10.5",
+    "tslint": "^5.12.1",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-react": "^3.6.0",
+    "typescript": "^3.3.3"
+  },
+  "jest": {
+    "preset": "react-native",
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js",
+      "\\.(ts|tsx)$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "tsconfig.jest.json"
+      }
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "setupFiles": [
+      "./tests/setup.js"
+    ]
+  }
+}
