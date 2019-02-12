@@ -1,4 +1,3 @@
-import ApolloClient from "apollo-boost";
 import React, { Component } from "react";
 import { ApolloProvider } from "react-apollo";
 import { client } from "./apollo";

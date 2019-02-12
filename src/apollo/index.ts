@@ -3,10 +3,11 @@ import { defaults } from "./defaults";
 import { resolvers } from "./resolvers";
 
 export const client = new ApolloClient({
-  uri: `https://nx9zvp49q7.lp.gql.zone/graphql`,
-  clientState: {
-    defaults,
-    resolvers
-    // typeDefs
-  }
+  uri: `https://us1.prisma.sh/public-luckox-377/reservation-graphql-backend/dev`
 });
+
+// clientState: {
+//   defaults,
+//   resolvers
+//   // typeDefs
+// }

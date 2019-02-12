@@ -1,15 +1,17 @@
-import gql from "graphql-tag";
+import { gql } from "apollo-boost";
 
 export const getReservations = gql`
   query {
-    apolloClientDemo @client {
-      currentPageName
+    rates(currency: "USD") {
+      currency
     }
   }
 `;
 
-export const getPageNameOptions = {
-  props: ({ data: { apolloClientDemo } }) => ({
-    apolloClientDemo
-  })
-};
+export const showReservation = gql`
+  query {
+    rates(currency: "USD") {
+      currency
+    }
+  }
+`;
