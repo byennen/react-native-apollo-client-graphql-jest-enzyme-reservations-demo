@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Query } from "react-apollo";
 import { Text, View } from "react-native";
 
@@ -10,7 +10,7 @@ interface Props {
   navigation: any;
 }
 
-class Reservation extends Component<Props> {
+class Reservation extends React.PureComponent<Props> {
   public static navigationOptions = {
     title: "Reservation"
   };

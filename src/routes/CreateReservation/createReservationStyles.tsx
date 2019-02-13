@@ -11,5 +11,13 @@ export default StyleSheet.create({
     fontSize: 20,
     textAlign: "center",
     margin: 10
+  },
+  input: {
+    height: 30,
+    width: 150,
+    borderColor: "gray",
+    borderWidth: 1,
+    marginTop: 5,
+    padding: 1
   }
 });

@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import { Query } from "react-apollo";
-import { Button, FlatList, Text, View, TouchableOpacity } from "react-native";
+import { Button, FlatList, Text, TouchableOpacity, View } from "react-native";
 
 import { GET_RESERVATIONS } from "./../../graphql";
 
@@ -10,9 +10,18 @@ interface Props {
   navigation: any;
 }
 
-export default class Reservations extends Component<Props> {
-  public static navigationOptions = {
-    title: "Reservations"
+export default class Reservations extends React.PureComponent<Props> {
+  public static navigationOptions = ({ navigation }) => {
+    return {
+      title: "Reservations",
+      headerRight: (
+        <Button
+          onPress={() => navigation.navigate("CreateReservation")}
+          title="New"
+          color="blue"
+        />
+      )
+    };
   };
   public render() {
     return (
@@ -46,12 +55,6 @@ export default class Reservations extends Component<Props> {
             );
           }}
         </Query>
-        <Button
-          onPress={() => this.props.navigation.navigate("CreateReservation")}
-          title="Create a new Reservation"
-          color="blue"
-          accessibilityLabel="Retake"
-        />
       </View>
     );
   }
