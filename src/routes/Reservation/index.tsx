@@ -2,7 +2,7 @@ import React from "react";
 import { Query } from "react-apollo";
 import { Text, View } from "react-native";
 
-import { SHOW_RESERVATION } from "./../../graphql";
+import { ReservationShowQueries } from "./../../graphql";
 
 import styles from "./reservationStyles";
 
@@ -18,7 +18,7 @@ class Reservation extends React.PureComponent<Props> {
     return (
       <View style={styles.container}>
         <Query
-          query={SHOW_RESERVATION}
+          query={ReservationShowQueries}
           variables={{ id: "cjru9qnoz475s0a44fmif7jw4" }}
         >
           {({ loading, error, data }) => {

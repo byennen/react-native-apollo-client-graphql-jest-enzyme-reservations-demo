@@ -1,33 +1,16 @@
 import { gql } from "apollo-boost";
+import { Formik } from "formik";
 import React from "react";
 import { Mutation } from "react-apollo";
 import { Button, Text, TextInput, View } from "react-native";
+
+import { ReservationCreateMutation } from "./../../graphql";
 
 import styles from "./createReservationStyles";
 
 interface Props {
   navigation: any;
 }
-
-const addReservation = gql`
-  mutation addReservation(
-    $name: String!
-    $hotelName: String!
-    $arrivalDate: String!
-    $departureDate: String!
-  ) {
-    createReservation(
-      data: {
-        name: $name
-        hotelName: $hotelName
-        arrivalDate: $arrivalDate
-        departureDate: $departureDate
-      }
-    ) {
-      id
-    }
-  }
-`;
 
 export default class CreateReservation extends React.PureComponent<Props> {
   public static navigationOptions = {
@@ -44,10 +27,9 @@ export default class CreateReservation extends React.PureComponent<Props> {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>Create Reservation</Text>
-        <Mutation mutation={addReservation}>
-          {(addReservationMutation, { data }) => (
+        <Mutation mutation={ReservationCreateMutation}>
+          {addReservationMutation => (
             <View>
-              <Text style={styles.welcome}>Guest Name:</Text>
               <TextInput
                 style={styles.input}
                 onChangeText={text => this.setState({ name: text })}
@@ -96,6 +78,57 @@ export default class CreateReservation extends React.PureComponent<Props> {
             </View>
           )}
         </Mutation>
+
+        <Formik
+          // initialValues={{ name: "", hotelName: "" }}
+          onSubmit={values => {
+            addReservationMutation({
+              variables: {
+                name: values.name,
+                hotelName: values.hotelName,
+                arrivalDate: values.arrivalDate,
+                departureDate: values.departureDate
+              }
+            })
+              .then(res => res)
+              .catch(err => <Text>{err}</Text>);
+          }}
+          // onSubmit={values => console.log(values)}
+        >
+          {props => (
+            <View>
+              <TextInput
+                style={styles.input}
+                onChangeText={props.handleChange("name")}
+                onBlur={props.handleBlur("name")}
+                value={props.values.name}
+                placeholder="Guest Name"
+              />
+              <TextInput
+                style={styles.input}
+                onChangeText={props.handleChange("hotelName")}
+                onBlur={props.handleBlur("hotelName")}
+                value={props.values.hotelName}
+                placeholder="Hotel Name"
+              />
+              <TextInput
+                style={styles.input}
+                onChangeText={props.handleChange("arrivalDate")}
+                onBlur={props.handleBlur("arrivalDate")}
+                value={props.values.arrivalDate}
+                placeholder="Arrival Date"
+              />
+              <TextInput
+                style={styles.input}
+                onChangeText={props.handleChange("departureDate")}
+                onBlur={props.handleBlur("departureDate")}
+                value={props.values.departureDate}
+                placeholder="Departure Date"
+              />
+              <Button onPress={props.handleSubmit} title="Create" />
+            </View>
+          )}
+        </Formik>
       </View>
     );
   }

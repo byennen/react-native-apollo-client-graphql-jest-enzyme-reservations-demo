@@ -1,10 +1,9 @@
 import React from "react";
 import { Query } from "react-apollo";
 import { Button, FlatList, Text, TouchableOpacity, View } from "react-native";
-
-import { GET_RESERVATIONS } from "./../../graphql";
-
+import { RerservationListQueries } from "./../../graphql";
 import styles from "./reservationsStyles";
+import { gql } from "apollo-boost";
 
 interface Props {
   navigation: any;
@@ -26,7 +25,7 @@ export default class Reservations extends React.PureComponent<Props> {
   public render() {
     return (
       <View style={styles.container}>
-        <Query query={GET_RESERVATIONS} pollInterval={500}>
+        <Query query={RerservationListQueries} pollInterval={500}>
           {({ loading, error, data }) => {
             if (loading) {
               return <Text>Get Reservations...</Text>;
