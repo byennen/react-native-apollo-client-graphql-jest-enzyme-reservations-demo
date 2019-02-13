@@ -3,7 +3,6 @@ import { Query } from "react-apollo";
 import { Button, FlatList, Text, TouchableOpacity, View } from "react-native";
 import { RerservationListQueries } from "./../../graphql";
 import styles from "./reservationsStyles";
-import { gql } from "apollo-boost";
 
 interface Props {
   navigation: any;

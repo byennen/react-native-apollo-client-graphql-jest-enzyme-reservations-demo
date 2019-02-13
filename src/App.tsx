@@ -1,14 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import { ApolloProvider } from "react-apollo";
-import { client } from "./apollo";
+import Client from "./apollo";
 import Routes from "./routes";
 
-interface Props {}
-
-export default class App extends Component<Props> {
+export default class App extends React.PureComponent {
   public render() {
     return (
-      <ApolloProvider client={client}>
+      <ApolloProvider client={Client}>
         <Routes />
       </ApolloProvider>
     );
