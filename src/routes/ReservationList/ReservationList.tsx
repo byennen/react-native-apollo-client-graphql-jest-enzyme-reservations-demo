@@ -2,7 +2,7 @@ import React from "react";
 import { Query } from "react-apollo";
 import { Button, FlatList, Text, TouchableOpacity, View } from "react-native";
 import { RerservationListQueries } from "./../../graphql";
-import styles from "./reservationsStyles";
+import styles from "./reservationListStyles";
 
 interface Props {
   navigation: any;

@@ -5,18 +5,24 @@
   "scripts": {
     "lint": "tslint --project tsconfig.json",
     "start": "node node_modules/react-native/local-cli/cli.js start",
+    "restart": "rm -rf ios/build/; kill $(lsof -t -i:8081); react-native run-ios",
     "test": "jest",
     "tsc": "tsc"
   },
   "dependencies": {
+    "@types/react-native-material-textfield": "^0.12.2",
+    "@types/yup": "^0.26.9",
     "apollo-boost": "^0.1.27",
     "formik": "^1.5.0",
     "graphql": "^14.1.1",
     "react": "16.6.3",
     "react-apollo": "^2.4.1",
     "react-native": "0.58.4",
+    "react-native-formik": "^1.7.4",
     "react-native-gesture-handler": "^1.0.15",
-    "react-navigation": "^3.2.1"
+    "react-native-material-textfield": "^0.12.0",
+    "react-navigation": "^3.2.1",
+    "yup": "^0.26.10"
   },
   "devDependencies": {
     "@types/enzyme": "^3.1.17",

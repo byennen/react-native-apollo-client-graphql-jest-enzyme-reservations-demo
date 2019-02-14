@@ -1,17 +1,17 @@
 import { createAppContainer, createStackNavigator } from "react-navigation";
 
 import ReservationCreate from "./ReservationCreate";
-import ReservationShow from "./ReservationShow";
 import ReservationList from "./ReservationList";
+import ReservationShow from "./ReservationShow";
 
 const RootStack = createStackNavigator(
   {
     ReservationCreate,
-    ReservationShow,
-    ReservationList
+    ReservationList,
+    ReservationShow
   },
   {
-    initialRouteName: "Reservations",
+    initialRouteName: "ReservationList",
     navigationOptions: {
       headerStyle: {
         backgroundColor: "#19A1D5"
