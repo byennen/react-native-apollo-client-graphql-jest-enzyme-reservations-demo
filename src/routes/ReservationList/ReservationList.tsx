@@ -1,7 +1,5 @@
 import React from "react";
-import { Query } from "react-apollo";
-import { Button, FlatList, Text, TouchableOpacity, View } from "react-native";
-import { RerservationListQueries } from "./../../graphql";
+import { Button, FlatList, Text, View } from "react-native";
 import styles from "./reservationListStyles";
 
 interface Props {
@@ -24,35 +22,16 @@ export default class ReservationList extends React.PureComponent<Props> {
   public render() {
     return (
       <View style={styles.container}>
-        <Query query={RerservationListQueries} pollInterval={500}>
-          {({ loading, error, data }) => {
-            if (loading) {
-              return <Text>Get Reservations...</Text>;
-            }
-            if (error) {
-              return <Text>Get Reservations ERROR! {error}</Text>;
-            }
-            return (
-              <FlatList
-                data={data.reservations}
-                renderItem={({ item }) => (
-                  <TouchableOpacity
-                    onPress={() => {
-                      this.props.navigation.navigate("Reservation", {
-                        id: item.id
-                      });
-                    }}
-                  >
-                    <Text>
-                      {item.arrivalDate} - {item.departureDate} -{" "}
-                      {item.hotelName} - {item.name}
-                    </Text>
-                  </TouchableOpacity>
-                )}
-              />
-            );
-          }}
-        </Query>
+        <FlatList
+          data={this.props.reservations}
+          keyExtractor={item => item.name}
+          renderItem={({ item }) => (
+            <Text>
+              {item.arrivalDate} - {item.departureDate} - {item.hotelName} -{" "}
+              {item.name}
+            </Text>
+          )}
+        />
       </View>
     );
   }

@@ -15,6 +15,7 @@
     "apollo-boost": "^0.1.27",
     "formik": "^1.5.0",
     "graphql": "^14.1.1",
+    "prop-types": "^15.7.2",
     "react": "16.6.3",
     "react-apollo": "^2.4.1",
     "react-native": "0.58.4",
@@ -22,6 +23,7 @@
     "react-native-gesture-handler": "^1.0.15",
     "react-native-material-textfield": "^0.12.0",
     "react-navigation": "^3.2.1",
+    "waait": "^1.0.4",
     "yup": "^0.26.10"
   },
   "devDependencies": {

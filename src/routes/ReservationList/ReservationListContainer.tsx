@@ -1,51 +1,21 @@
-{
-  /*
-import { connect } from 'react-redux'
-import Reservations from './Reservations'
+import React from "react";
+import { Query } from "react-apollo";
+import { Text } from "react-native";
+import { RerservationListQueries } from "./../../graphql";
+import ReservationList from "./ReservationList";
 
-const mapStateToProps = state => {
-  const { deviceToken } = state
+const ReservationListContainer = () => (
+  <Query query={RerservationListQueries} pollInterval={500}>
+    {({ loading, error, data }) => {
+      if (loading) {
+        return <Text>Get Reservations...</Text>;
+      }
+      if (error) {
+        return <Text>Get Reservations ERROR! {error}</Text>;
+      }
+      return <ReservationList reservations={data.reservations} />;
+    }}
+  </Query>
+);
 
-  return {
-    deviceToken: deviceToken.deviceToken
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {}
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Login)
-
----
-import gql from "graphql-tag";
-import { compose, graphql } from "react-apollo";
-import Reservations from "./Reservations";
-
-const ExchangeRates = () => (
-  .query({
-     query: gql`
-       {
-         rates(currency: "USD") {
-           currency
-         }
-       }
-     `
-   })
-   .then(result => console.log(result)
-)
-
-const withOne = graphql(ExchangeRates, {
-  props: ({ data }) => ({
-    loadingOne: data.loading,
-    rates: data.rates
-  })
-});
-
-export default compose(withOne)(Reservations);
-
-*/
-}
+export default ReservationListContainer;
