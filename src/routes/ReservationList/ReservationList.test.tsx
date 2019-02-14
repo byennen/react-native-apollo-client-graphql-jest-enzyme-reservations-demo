@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "react-native-testing-library";
-import Reservations from "./Reservations";
+import ReservationList from "./ReservationList";
 
 const createTestProps = (props?: object) => ({
   navigation: {
@@ -11,7 +11,7 @@ const createTestProps = (props?: object) => ({
 
 describe("Reservations", () => {
   const props = createTestProps();
-  const { getByText } = render(<Reservations {...props} />);
+  const { getByText } = render(<ReservationList {...props} />);
 
   it("should render all reservations", () => {
     expect(getByText(/reservations/i)).toBeDefined();

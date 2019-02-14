@@ -7,5 +7,5 @@ export { Reservations };
 export default ReservationsContainer;
 */
 }
-import Reservations from "./Reservations";
-export default Reservations;
+import ReservationList from "./ReservationList";
+export default ReservationList;

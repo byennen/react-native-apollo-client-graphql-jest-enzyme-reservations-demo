@@ -1,19 +1,14 @@
 import { createAppContainer, createStackNavigator } from "react-navigation";
 
-// Routes
-
-// TODO: rename CreateReservation to ReservationCreate
-// & Reservation to ReservationShow
-// & Reservations to ReservationList
 import ReservationCreate from "./ReservationCreate";
-import Reservation from "./Reservation";
-import Reservations from "./Reservations";
+import ReservationShow from "./ReservationShow";
+import ReservationList from "./ReservationList";
 
 const RootStack = createStackNavigator(
   {
     ReservationCreate,
-    Reservation,
-    Reservations
+    ReservationShow,
+    ReservationList
   },
   {
     initialRouteName: "Reservations",

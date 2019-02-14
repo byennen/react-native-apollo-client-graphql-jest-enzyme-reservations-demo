@@ -4,13 +4,13 @@ import { Text, View } from "react-native";
 
 import { ReservationShowQueries } from "./../../graphql";
 
-import styles from "./reservationStyles";
+import styles from "./reservationShowStyles";
 
 interface Props {
   navigation: any;
 }
 
-class Reservation extends React.PureComponent<Props> {
+class ReservationShow extends React.PureComponent<Props> {
   public static navigationOptions = {
     title: "Reservation"
   };
@@ -37,4 +37,4 @@ class Reservation extends React.PureComponent<Props> {
   }
 }
 
-export default Reservation;
+export default ReservationShow;

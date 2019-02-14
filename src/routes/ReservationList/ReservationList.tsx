@@ -8,7 +8,7 @@ interface Props {
   navigation: any;
 }
 
-export default class Reservations extends React.PureComponent<Props> {
+export default class ReservationList extends React.PureComponent<Props> {
   public static navigationOptions = ({ navigation }) => {
     return {
       title: "Reservations",
