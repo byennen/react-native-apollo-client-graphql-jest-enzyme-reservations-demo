@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "react-native-testing-library";
-import CreateReservation from "./CreateReservation";
+import ReservationCreate from "./ReservationCreate";
 
 const createTestProps = (props?: object) => ({
   navigation: {
@@ -9,9 +9,9 @@ const createTestProps = (props?: object) => ({
   ...props
 });
 
-describe("CreateReservation", () => {
+describe("Create Reservation", () => {
   const props = createTestProps();
-  const { getByText } = render(<CreateReservation {...props} />);
+  const { getByText } = render(<ReservationCreate {...props} />);
 
   it("should render a create reservation", () => {
     expect(getByText(/Create Reservation/i)).toBeDefined();

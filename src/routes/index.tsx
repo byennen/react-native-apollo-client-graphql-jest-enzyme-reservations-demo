@@ -5,13 +5,13 @@ import { createAppContainer, createStackNavigator } from "react-navigation";
 // TODO: rename CreateReservation to ReservationCreate
 // & Reservation to ReservationShow
 // & Reservations to ReservationList
-import CreateReservation from "./CreateReservation";
+import ReservationCreate from "./ReservationCreate";
 import Reservation from "./Reservation";
 import Reservations from "./Reservations";
 
 const RootStack = createStackNavigator(
   {
-    CreateReservation,
+    ReservationCreate,
     Reservation,
     Reservations
   },

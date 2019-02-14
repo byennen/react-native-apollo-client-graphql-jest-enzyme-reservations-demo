@@ -6,15 +6,15 @@ import { Button, Text, TextInput, View } from "react-native";
 
 import { ReservationCreateMutation } from "./../../graphql";
 
-import styles from "./createReservationStyles";
+import styles from "./reservationCreateStyles";
 
 interface Props {
   navigation: any;
 }
 
-export default class CreateReservation extends React.PureComponent<Props> {
+export default class ReservationCreate extends React.PureComponent<Props> {
   public static navigationOptions = {
-    title: "Create Reservation"
+    title: "Reservation Create"
   };
   state = {
     name: "",
