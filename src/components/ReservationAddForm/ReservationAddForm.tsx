@@ -5,7 +5,6 @@ import { Button, Text, View } from "react-native";
 import { handleTextInput } from "react-native-formik";
 import { TextField } from "react-native-material-textfield";
 import * as Yup from "yup";
-
 import { ReservationCreateMutation } from "./../../graphql";
 
 const Input = handleTextInput(TextField);
@@ -28,7 +27,6 @@ const ReservationAddForm = () => {
             arrivalDate: "",
             departureDate: ""
           }}
-          // onSubmit={values => console.log(values)}
           onSubmit={values => {
             addReservationMutation({
               variables: {

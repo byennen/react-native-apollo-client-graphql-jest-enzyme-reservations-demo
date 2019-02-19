@@ -1,12 +1,21 @@
 import React from "react";
 import { MockedProvider } from "react-apollo/test-utils";
-import { shallow } from "enzyme";
+// import { shallow } from "enzyme";
+import { render } from "react-native-testing-library";
 import wait from "waait";
-// import { render } from "react-native-testing-library";
 import { RerservationListQueries } from "./../../graphql";
-import ReservationListContainer from "./ReservationListContainer";
+import Reservations from "./Reservations";
+
+const createTestProps = (props?: object) => ({
+  navigation: {
+    navigate: jest.fn()
+  },
+  ...props
+});
 
 test("Mounted Reservations", async () => {
+  const props = createTestProps();
+
   const mocks = [
     {
       request: { query: RerservationListQueries },
@@ -36,14 +45,14 @@ test("Mounted Reservations", async () => {
       }
     }
   ];
-  const wrapper = shallow(
+  const output = render(
     <MockedProvider mocks={mocks}>
-      <ReservationListContainer />
+      <Reservations {...props} />
     </MockedProvider>
   );
   await wait(0); // Wait a tick to get past the loading state
-  expect(wrapper.text()).toContain("id: 123");
-  expect(wrapper.text()).toContain("name: Cat 123");
+  expect(output.text()).toContain("name: Carl Santos");
+  expect(output.text()).toContain("name: Nathaniel Robert");
 });
 
 //
