@@ -1,33 +1,22 @@
 import { mount } from "enzyme";
 import { MockedProvider } from "react-apollo/test-utils";
 import { RerservationListQueries } from "./../../../graphql";
-
-import { GET_POKEMON_DETAILS } from "../gql";
 import React from "react";
-import { PokemonDetailsFactory } from "../../../tests/factories";
+import { ReservationFactory } from "./../../../../tests/factories";
+import Reservations from "./../Reservations";
 import wait from "waait";
-import ScreenMessage from "../../../components/ScreenMessage";
-import Pokemon from "../Pokemon";
-import PokemonTabs from "../PokemonTabs";
-import Loader from "../../../components/Loader";
 
-jest.mock("../../../components/ScreenMessage/styles");
-
-const id = "4321";
-const pokemon = PokemonDetailsFactory.build(3);
+const reservations = ReservationFactory.build(3);
 const commonMock = {
   request: {
-    query: RerservationListQueries,
-    variables: {
-      id
-    }
+    query: RerservationListQueries
   }
 };
 const dataMock = {
   ...commonMock,
   result: {
     data: {
-      pokemon
+      reservations
     }
   }
 };
@@ -35,11 +24,11 @@ const navigation: any = {
   getParam: jest.fn(() => id)
 };
 
-describe("<Pokemon/>", () => {
+describe("<Reservations/>", () => {
   const prepareWrapper = mocks => {
     return mount(
       <MockedProvider mocks={mocks} addTypename={false}>
-        <Pokemon navigation={navigation} />
+        <Reservations />
       </MockedProvider>
     );
   };
@@ -50,25 +39,6 @@ describe("<Pokemon/>", () => {
     expect(wrapper.find(Loader).exists()).toEqual(true);
   });
 
-  it("should render error state", async () => {
-    const mock = {
-      ...commonMock,
-      error: new Error()
-    };
-    const wrapper = prepareWrapper([mock]);
-
-    await wait(2);
-
-    wrapper.update();
-
-    expect(wrapper.find(ScreenMessage).props()).toEqual({
-      iconProps: {
-        name: "question-circle"
-      },
-      message: "Pokemon not found"
-    });
-  });
-
   it("should render component with data", async () => {
     const wrapper = prepareWrapper([dataMock]);
 
@@ -76,8 +46,8 @@ describe("<Pokemon/>", () => {
 
     wrapper.update();
 
-    expect(wrapper.find(PokemonTabs).props()).toEqual({
-      pokemon
+    expect(wrapper.find(ReservationList).props()).toEqual({
+      reservations
     });
   });
 });

@@ -14,6 +14,11 @@ describe("<ReservationItem/>", () => {
   it("should render component", () => {
     const wrapper = shallow(<ReservationItem item={reservation} />);
 
-    expect(wrapper.text()).toContain(reservation.name);
+    expect(
+      wrapper
+        .find("Text")
+        .render()
+        .text()
+    ).toContain(reservation.name);
   });
 });
