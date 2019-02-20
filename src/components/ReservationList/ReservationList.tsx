@@ -1,28 +1,28 @@
 import React from "react";
 import { FlatList, Text } from "react-native";
+import { ReservationProps } from "../../types/reservation";
 
 interface Props {
-  reservations: any;
+  reservations: ReservationProps[];
 }
 
-export default class ReservationList extends React.PureComponent<Props> {
-  constructor(props: Props) {
-    super(props);
-  }
+const Reservations: React.FunctionComponent<Props> = ({ reservations }) => {
+  return (
+    <FlatList
+      data={Reservations}
+      keyExtractor={(item: ReservationProps, index) => index.toString()}
+      renderItem={({ item }) => (
+        <Text>
+          {item.arrivalDate} - {item.departureDate} - {item.hotelName} -{" "}
+          {item.name}
+        </Text>
+      )}
+    />
+  );
+};
 
-  public render() {
-    console.log(this.props);
-    return (
-      <FlatList
-        data={this.props.reservations}
-        keyExtractor={item => item.name}
-        renderItem={({ item }) => (
-          <Text>
-            {item.arrivalDate} - {item.departureDate} - {item.hotelName} -{" "}
-            {item.name}
-          </Text>
-        )}
-      />
-    );
-  }
+export default Reservations;
+
+{
+  /* renderItem={({ item }) => <ReservationItem item={item} />} */
 }

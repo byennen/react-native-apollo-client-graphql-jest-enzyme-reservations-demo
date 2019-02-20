@@ -27,6 +27,7 @@
   "devDependencies": {
     "@types/enzyme": "^3.1.17",
     "@types/enzyme-adapter-react-16": "^1.0.3",
+    "@types/faker": "^4.1.5",
     "@types/jest": "^24.0.0",
     "@types/react": "^16.8.2",
     "@types/react-native": "^0.57.35",
@@ -34,17 +35,22 @@
     "@types/react-native-material-textfield": "^0.12.2",
     "@types/react-navigation": "^3.0.1",
     "@types/react-test-renderer": "^16.8.0",
+    "@types/rosie": "^0.0.36",
     "@types/yup": "^0.26.9",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "24.1.0",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.9.1",
+    "faker": "^4.1.0",
     "jest": "24.1.0",
+    "jsdom": "^13.2.0",
+    "jsdom-global": "^3.0.2",
     "metro-react-native-babel-preset": "0.51.1",
     "react-dom": "^16.8.1",
     "react-native-testing-library": "^1.5.0",
     "react-test-renderer": "16.6.3",
-    "ts-jest": "^23.10.5",
+    "rosie": "^2.0.1",
+    "ts-jest": ">=22.0.0",
     "tslint": "^5.12.1",
     "tslint-config-prettier": "^1.18.0",
     "tslint-eslint-rules": "^5.4.0",
@@ -69,7 +75,8 @@
     ],
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
     "setupFiles": [
-      "./tests/setup.js"
-    ]
+      "./tests/setup.ts"
+    ],
+    "testEnvironment": "jsdom"
   }
 }
