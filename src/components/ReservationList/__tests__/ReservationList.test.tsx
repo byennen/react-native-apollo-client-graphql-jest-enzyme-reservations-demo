@@ -22,6 +22,6 @@ describe("<ReservationList/>", () => {
     expect(component.props()).toEqual({
       item: reservation
     });
-    expect(component.name()).toEqual("withNavigation(PokemonItem)");
+    expect(component.name()).toEqual("withNavigation(ReservationItem)");
   });
 });

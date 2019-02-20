@@ -1,6 +1,7 @@
 import React from "react";
-import { FlatList, Text } from "react-native";
+import { FlatList } from "react-native";
 import { ReservationProps } from "../../types/reservation";
+import ReservationItem from "./../ReservationItem";
 
 interface Props {
   reservations: ReservationProps[];
@@ -9,20 +10,11 @@ interface Props {
 const Reservations: React.FunctionComponent<Props> = ({ reservations }) => {
   return (
     <FlatList
-      data={Reservations}
+      data={reservations}
       keyExtractor={(item: ReservationProps, index) => index.toString()}
-      renderItem={({ item }) => (
-        <Text>
-          {item.arrivalDate} - {item.departureDate} - {item.hotelName} -{" "}
-          {item.name}
-        </Text>
-      )}
+      renderItem={({ item }) => <ReservationItem item={item} />}
     />
   );
 };
 
 export default Reservations;
-
-{
-  /* renderItem={({ item }) => <ReservationItem item={item} />} */
-}
