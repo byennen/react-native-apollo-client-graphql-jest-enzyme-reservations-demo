@@ -5,8 +5,15 @@ import React from "react";
 import { ReservationFactory } from "./../../../../tests/factories";
 import Reservations from "./../Reservations";
 import wait from "waait";
+import ReservationList from "../../../components/ReservationList";
 
-const reservations = ReservationFactory.build(3);
+interface Mocks {
+  name: string;
+  hotelName: string;
+  arrivalDate: string;
+  departureDate: string;
+}
+const reservations = ReservationFactory.build();
 const commonMock = {
   request: {
     query: RerservationListQueries
@@ -20,9 +27,6 @@ const dataMock = {
     }
   }
 };
-const navigation: any = {
-  getParam: jest.fn(() => id)
-};
 
 describe("<Reservations/>", () => {
   const prepareWrapper = mocks => {
@@ -35,8 +39,7 @@ describe("<Reservations/>", () => {
 
   it("should render loading state", () => {
     const wrapper = prepareWrapper([]);
-
-    expect(wrapper.find(Loader).exists()).toEqual(true);
+    expect(wrapper.text()).toContain("Get Reservations...");
   });
 
   it("should render component with data", async () => {
@@ -51,23 +54,3 @@ describe("<Reservations/>", () => {
     });
   });
 });
-
-// import React from "react";
-// import { render } from "react-native-testing-library";
-// import Reservations from "./../Reservations";
-//
-// const createTestProps = (props?: object) => ({
-//   navigation: {
-//     navigate: jest.fn()
-//   },
-//   ...props
-// });
-//
-// describe("Create Reservation", () => {
-//   const props = createTestProps();
-//   const { getByText } = render(<Reservations {...props} />);
-//
-//   it("should render a create reservation", () => {
-//     expect(getByText(/Reservations/i)).toBeDefined();
-//   });
-// });
