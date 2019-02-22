@@ -12,8 +12,7 @@ export default class Reservations extends React.PureComponent {
       headerRight: (
         <Button
           onPress={() => navigation.navigate("ReservationCreate")}
-          title="New"
-          color="blue"
+          title="+ Add"
         />
       )
     };

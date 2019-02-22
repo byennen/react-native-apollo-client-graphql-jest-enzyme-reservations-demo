@@ -16,7 +16,11 @@ const validationSchema = Yup.object().shape({
   departureDate: Yup.date().required("departure date is required")
 });
 
-class ReservationAddForm extends React.PureComponent {
+interface Props {
+  navigation: any;
+}
+
+class ReservationAddForm extends React.PureComponent<Props> {
   public render() {
     return (
       <Mutation mutation={ReservationCreateMutation}>
@@ -37,8 +41,11 @@ class ReservationAddForm extends React.PureComponent {
                   departureDate: values.departureDate
                 }
               })
-                .then(res => res)
-                .catch(err => <Text>{err}</Text>);
+                .then(res => {
+                  console.log(res);
+                  // this.props.navigation.navigate("Reservations");
+                })
+                .catch((err: any) => <Text>{err}</Text>);
             }}
             validationSchema={validationSchema}
             render={props => {
