@@ -1,4 +1,4 @@
-import { shallow } from "enzyme";
+import { mount } from "enzyme";
 import React from "react";
 import { MockedProvider } from "react-apollo/test-utils";
 import { Button } from "react-native";
@@ -18,7 +18,7 @@ const mocks = [
 ];
 
 describe("Create Reservation", () => {
-  const wrapper = shallow(
+  const wrapper = mount(
     <MockedProvider mocks={mocks} addTypename={false}>
       <ReservationAddForm />
     </MockedProvider>
@@ -29,11 +29,16 @@ describe("Create Reservation", () => {
     await wait(0);
 
     wrapper.update();
+    expect(wrapper.length).toEqual(1);
 
-    // const button = wrapper.find("button");
-    // button.simulate("click");
+    wrapper.find("Button").simulate("click");
     console.log(wrapper.debug());
-    //   const tree = wrapper.toJSON();
+
+    // wrapper.find("input").simulate("change", {
+    //   target: { value: reservation.name }
+    // });
+    // const button = wrapper.find("button").simulate("click");
+    // const tree = wrapper.toJSON();
     //   console.log(tree);
     //   expect(tree.children).toContain("Loading...");
   });

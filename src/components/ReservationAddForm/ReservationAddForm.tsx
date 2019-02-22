@@ -16,53 +16,55 @@ const validationSchema = Yup.object().shape({
   departureDate: Yup.date().required("departure date is required")
 });
 
-const ReservationAddForm = () => {
-  return (
-    <Mutation mutation={ReservationCreateMutation}>
-      {addReservationMutation => (
-        <Formik
-          initialValues={{
-            name: "",
-            hotelName: "",
-            arrivalDate: "",
-            departureDate: ""
-          }}
-          onSubmit={values => {
-            addReservationMutation({
-              variables: {
-                name: values.name,
-                hotelName: values.hotelName,
-                arrivalDate: values.arrivalDate,
-                departureDate: values.departureDate
-              }
-            })
-              .then(res => res)
-              .catch(err => <Text>{err}</Text>);
-          }}
-          validationSchema={validationSchema}
-          render={props => {
-            return (
-              <View>
-                <Input name="name" type="name" label="Name" />
-                <Input name="hotelName" type="hotelName" label="Hotel Name" />
-                <Input
-                  name="arrivalDate"
-                  type="arrivalDate"
-                  label="Arrival Date"
-                />
-                <Input
-                  name="departureDate"
-                  type="departureDate"
-                  label="Departure Date"
-                />
-                <Button onPress={props.handleSubmit} title="SUBMIT" />
-              </View>
-            );
-          }}
-        />
-      )}
-    </Mutation>
-  );
-};
+class ReservationAddForm extends React.PureComponent {
+  public render() {
+    return (
+      <Mutation mutation={ReservationCreateMutation}>
+        {addReservationMutation => (
+          <Formik
+            initialValues={{
+              name: "",
+              hotelName: "",
+              arrivalDate: "",
+              departureDate: ""
+            }}
+            onSubmit={values => {
+              addReservationMutation({
+                variables: {
+                  name: values.name,
+                  hotelName: values.hotelName,
+                  arrivalDate: values.arrivalDate,
+                  departureDate: values.departureDate
+                }
+              })
+                .then(res => res)
+                .catch(err => <Text>{err}</Text>);
+            }}
+            validationSchema={validationSchema}
+            render={props => {
+              return (
+                <View>
+                  <Input name="name" type="name" label="Name" />
+                  <Input name="hotelName" type="hotelName" label="Hotel Name" />
+                  <Input
+                    name="arrivalDate"
+                    type="arrivalDate"
+                    label="Arrival Date"
+                  />
+                  <Input
+                    name="departureDate"
+                    type="departureDate"
+                    label="Departure Date"
+                  />
+                  <Button onPress={props.handleSubmit} title="SUBMIT" />
+                </View>
+              );
+            }}
+          />
+        )}
+      </Mutation>
+    );
+  }
+}
 
 export default ReservationAddForm;
