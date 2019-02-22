@@ -6,6 +6,7 @@ import { handleTextInput } from "react-native-formik";
 import { TextField } from "react-native-material-textfield";
 import * as Yup from "yup";
 import { ReservationCreateMutation } from "./../../graphql";
+import { withNavigation } from "react-navigation";
 
 const Input = handleTextInput(TextField);
 
@@ -42,8 +43,8 @@ class ReservationAddForm extends React.PureComponent<Props> {
                 }
               })
                 .then(res => {
-                  console.log(res);
-                  // this.props.navigation.navigate("Reservations");
+                  // console.log(res);
+                  this.props.navigation.navigate("Reservations");
                 })
                 .catch((err: any) => <Text>{err}</Text>);
             }}
@@ -74,4 +75,4 @@ class ReservationAddForm extends React.PureComponent<Props> {
   }
 }
 
-export default ReservationAddForm;
+export default withNavigation(ReservationAddForm);
