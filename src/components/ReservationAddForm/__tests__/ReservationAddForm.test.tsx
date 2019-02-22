@@ -7,6 +7,10 @@ import { ReservationCreateMutation } from "./../../../graphql";
 import ReservationAddForm from "./../ReservationAddForm";
 import wait from "waait";
 
+jest.mock("react-navigation", () => ({
+  withNavigation: jest.fn(wrapper => wrapper)
+}));
+
 const reservation = ReservationFactory.build();
 const mocks = [
   {
@@ -32,7 +36,7 @@ describe("Create Reservation", () => {
     expect(wrapper.length).toEqual(1);
 
     wrapper.find("Button").simulate("click");
-    console.log(wrapper.debug());
+    // console.log(wrapper.debug());
 
     // wrapper.find("input").simulate("change", {
     //   target: { value: reservation.name }
