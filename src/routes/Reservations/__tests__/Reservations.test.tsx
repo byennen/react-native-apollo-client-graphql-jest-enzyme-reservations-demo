@@ -1,11 +1,11 @@
 import { mount } from "enzyme";
-import { MockedProvider } from "react-apollo/test-utils";
-import { RerservationListQueries } from "./../../../graphql";
 import React from "react";
+import { MockedProvider } from "react-apollo/test-utils";
 import { ReservationFactory } from "./../../../../tests/factories";
-import Reservations from "./../Reservations";
+import { RerservationListQueries } from "./../../../graphql";
 import wait from "waait";
 import ReservationList from "../../../components/ReservationList";
+import Reservations from "./../Reservations";
 
 interface Mocks {
   name: string;
@@ -13,7 +13,9 @@ interface Mocks {
   arrivalDate: string;
   departureDate: string;
 }
+
 const reservations = ReservationFactory.build();
+
 const commonMock = {
   request: {
     query: RerservationListQueries

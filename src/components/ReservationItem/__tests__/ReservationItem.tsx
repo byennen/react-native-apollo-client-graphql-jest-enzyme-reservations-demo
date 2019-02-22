@@ -2,9 +2,7 @@ import { shallow } from "enzyme";
 import React from "react";
 import { ReservationFactory } from "./../../../../tests/factories";
 import ReservationItem from "./../ReservationItem";
-// import { Image, Name } from "../styles";
 
-// jest.mock("../styles");
 jest.mock("react-navigation", () => ({
   withNavigation: jest.fn(component => component)
 }));

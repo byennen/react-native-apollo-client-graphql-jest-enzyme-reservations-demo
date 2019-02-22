@@ -1,17 +1,40 @@
+import { shallow } from "enzyme";
 import React from "react";
-import { render } from "react-native-testing-library";
+import { MockedProvider } from "react-apollo/test-utils";
+import { Button } from "react-native";
+import { ReservationFactory } from "../../../../tests/factories";
+import { ReservationCreateMutation } from "./../../../graphql";
 import ReservationAddForm from "./../ReservationAddForm";
+import wait from "waait";
 
-const createTestProps = (props?: object) => ({
-  navigation: {
-    navigate: jest.fn()
-  },
-  ...props
-});
+const reservation = ReservationFactory.build();
+const mocks = [
+  {
+    request: {
+      query: ReservationCreateMutation
+    },
+    result: { data: { reservation } }
+  }
+];
 
 describe("Create Reservation", () => {
-  const props = createTestProps();
-  const { getByText } = render(<ReservationAddForm {...props} />);
+  const wrapper = shallow(
+    <MockedProvider mocks={mocks} addTypename={false}>
+      <ReservationAddForm />
+    </MockedProvider>
+  );
 
-  it("should create a reservation", () => {});
+  it("should create a reservation", async () => {
+    // expect(wrapper.find("button").text()).toEqual("Submit");
+    await wait(0);
+
+    wrapper.update();
+
+    // const button = wrapper.find("button");
+    // button.simulate("click");
+    console.log(wrapper.debug());
+    //   const tree = wrapper.toJSON();
+    //   console.log(tree);
+    //   expect(tree.children).toContain("Loading...");
+  });
 });

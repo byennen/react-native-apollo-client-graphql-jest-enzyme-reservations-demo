@@ -17,7 +17,7 @@ export default class ReservationCreate extends React.PureComponent<Props> {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>Create Reservation</Text>
-        <ReservationAddForm />
+        {/*<ReservationAddForm />*/}
       </View>
     );
   }
