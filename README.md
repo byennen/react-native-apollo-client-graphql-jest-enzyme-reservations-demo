@@ -1,3 +1,26 @@
+# Hilton Code Demo
+
+Create typescript add from template and add Jest and Enzyme:
+https://medium.com/@jan.hesters/using-typescript-with-react-native-946aa4b4ae6f
+
+Use TSLint even thought Typescript is moving to ESLint
+
+Add Apollo
+https://www.apollographql.com/docs/react/essentials/get-started.html
+
+Use Apollo Boost to keep the code DRY for the demo
+
+Setup React-Navigation
+https://reactnavigation.org
+
+Setup Routes and initial tests
+
+Setup GrapQL Queries & basic tests. I didn't over do the tests and test every scenario like I wanted.
+
+I ran out of time for this code sample. react-dom is complaining when running jest tests. I left that because its an issue with ts-jest. I did not add validation for a date or a datepicker with a little more time I would have. I also did not add a success message after adding a reservation. I redirect the user back to all reservations. With a little more time I would have added a message. I ran out of time to do my own code review. I'm going to come back to this and create a blog post out of this demo, thanks!
+
+---
+
 # Hilton React-Native / GraphQL Reservation Demo
 
 ## Goal/Requirements

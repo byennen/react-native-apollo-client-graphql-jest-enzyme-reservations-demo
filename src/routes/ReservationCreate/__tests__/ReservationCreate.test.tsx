@@ -1,19 +1,19 @@
+import { mount } from "enzyme";
 import React from "react";
-import { render } from "react-native-testing-library";
+import { MockedProvider } from "react-apollo/test-utils";
 import ReservationCreate from "./../ReservationCreate";
 
-const createTestProps = (props?: object) => ({
-  navigation: {
-    navigate: jest.fn()
-  },
-  ...props
-});
+jest.mock("react-navigation", () => ({
+  withNavigation: jest.fn(wrapper => wrapper)
+}));
 
-describe("Create Reservation", () => {
-  const props = createTestProps();
-  const { getByText } = render(<ReservationCreate {...props} />);
-
-  it("should render a create reservation", () => {
-    expect(getByText(/Create Reservation/i)).toBeDefined();
+describe("<ReservationCreate/>", () => {
+  it("should render component", () => {
+    const wrapper = mount(
+      <MockedProvider mocks={[]} addTypename={false}>
+        <ReservationCreate />
+      </MockedProvider>
+    );
+    expect(wrapper.text()).toContain("Create Reservation");
   });
 });

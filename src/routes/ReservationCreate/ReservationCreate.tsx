@@ -4,11 +4,7 @@ import ReservationAddForm from "./../../components/ReservationAddForm";
 
 import styles from "./reservationCreateStyles";
 
-interface Props {
-  navigation: any;
-}
-
-export default class ReservationCreate extends React.PureComponent<Props> {
+export default class ReservationCreate extends React.PureComponent {
   public static navigationOptions = {
     title: "Reservation Create"
   };

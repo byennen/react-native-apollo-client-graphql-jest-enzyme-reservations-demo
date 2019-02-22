@@ -4,9 +4,9 @@ import { Mutation } from "react-apollo";
 import { Button, Text, View } from "react-native";
 import { handleTextInput } from "react-native-formik";
 import { TextField } from "react-native-material-textfield";
+import { withNavigation } from "react-navigation";
 import * as Yup from "yup";
 import { ReservationCreateMutation } from "./../../graphql";
-import { withNavigation } from "react-navigation";
 
 const Input = handleTextInput(TextField);
 
